@@ -6,6 +6,9 @@ use App\Http\Controllers\Auth\Logout;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\ProfileController;
+
+
 
 Route::get('/', [ChirpController::class, 'index']) ->name('home');
 
@@ -50,3 +53,6 @@ Route::post('/login', Login::class)
 Route::post('/logout', Logout::class)
     ->middleware('auth')
     ->name('logout');
+
+Route::get('/profile', [ProfileController::class, 'edit'])->middleware('auth');
+Route::put('/profile', [ProfileController::class, 'update'])->middleware('auth');

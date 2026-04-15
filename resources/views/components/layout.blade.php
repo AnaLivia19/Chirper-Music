@@ -13,6 +13,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="min-h-screen flex flex-col bg-purple-500 font-sans">
 
     <nav class="navbar bg-purple-300">
@@ -22,12 +23,29 @@
 
         <div class="navbar-end gap-2">
             @auth
-                <span class="text-sm">{{ auth()->user()->name }}</span>
+
+                <!-- 👇 AQUI É A MUDANÇA (nome virou avatar) -->
+                <a href="/profile" class="flex items-center gap-2">
+
+                    <div class="w-8 h-8 rounded-full overflow-hidden bg-gray-300">
+
+                        @if(auth()->user()->avatar)
+                            <img src="{{ asset('storage/' . auth()->user()->avatar) }}"
+                                 class="w-full h-full object-cover">
+                        @else
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}"
+                                 class="w-full h-full object-cover">
+                        @endif
+
+                    </div>
+
+                </a>
 
                 <form method="POST" action="/logout" class="inline">
                     @csrf
                     <button type="submit" class="btn btn-ghost btn-sm">Logout</button>
                 </form>
+
             @else
                 <a href="/login" class="btn btn-ghost btn-sm">Sign In</a>
                 <a href="{{ route('register') }}" class="btn btn-primary btn-sm">Sign Up</a>
@@ -40,7 +58,7 @@
         <div class="toast toast-top toast-center">
             <div class="alert alert-success">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span>{{ session('success') }}</span>

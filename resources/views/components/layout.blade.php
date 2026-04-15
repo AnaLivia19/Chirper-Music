@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>{{ isset($title) ? $title . ' - Chirper' : 'Chirper' }}</title>
+
+<link rel="icon" href="/icon/iconn.jpg" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
@@ -24,7 +27,7 @@
         <div class="navbar-end gap-2">
             @auth
 
-                <!-- 👇 AQUI É A MUDANÇA (nome virou avatar) -->
+                <!-- Aqui fica a foto de perfil-->
                 <a href="/profile" class="flex items-center gap-2">
 
                     <div class="w-8 h-8 rounded-full overflow-hidden bg-gray-300">
@@ -72,7 +75,7 @@
 
     <footer class="footer footer-center p-5 bg-purple-300 text-base-content text-xs">
         <div>
-            <p>© {{ date('Y') }} Chirper - Built with Laravel and ❤️</p>
+            <p>© {{ date('Y') }} Chirper</p>
         </div>
     </footer>
 

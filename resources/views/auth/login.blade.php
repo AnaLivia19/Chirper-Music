@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>
-        Sign In
+        Login
     </x-slot:title>
 
     <div class="hero min-h-[calc(100vh-16rem)]">
